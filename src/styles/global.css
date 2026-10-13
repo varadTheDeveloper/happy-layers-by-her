@@ -1,0 +1,234 @@
+/* ─────────────────────────────────────────────────────────────
+   Happy Layers by Her: design tokens and base styles
+   Ideas taken from her own work:
+   - piped scallop borders (vintage cakes)  → section edges
+   - pink grid "note paper" (her menu slides) → price and policy cards
+   - arch / cake-dome shape                → hero photo frame
+   ───────────────────────────────────────────────────────────── */
+
+:root {
+  --sugar: #fffbfa;        /* page: icing white with a pink cast */
+  --blush: #f8dde3;        /* bands */
+  --blush-soft: #fcf0f2;   /* quiet fills */
+  --grid: #f3cdd6;         /* note-paper lines */
+  --rose: #b0365d;         /* text accent, buttons (AA on white and blush) */
+  --rose-deep: #8f2a4b;    /* hover */
+  --rose-bright: #e27a9b;  /* decoration only */
+  --ink: #2b1f23;          /* cocoa ink */
+  --muted: #6c585e;
+  --line: #ecd3d9;
+  --gold: #a87b3f;
+
+  --display: 'Bodoni Moda Variable', 'Bodoni Moda', 'Didot', 'Bodoni 72', Georgia, serif;
+  --body: 'Nunito Sans Variable', 'Nunito Sans', 'Segoe UI', system-ui, sans-serif;
+
+  /* type scale (major third) */
+  --t-sm: 0.875rem;
+  --t-base: 1.0625rem;
+  --t-md: 1.25rem;
+  --t-lg: 1.6rem;
+  --t-xl: clamp(2rem, 1.4rem + 2.4vw, 2.9rem);
+  --t-xxl: clamp(2.5rem, 1.6rem + 4vw, 4.4rem);
+
+  --wrap: 1180px;
+  --gutter: clamp(16px, 4vw, 40px);
+  --radius-photo: 18px;
+  --radius-paper: 6px;
+
+  --scallop-up: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='34' height='17' viewBox='0 0 34 17'%3E%3Cpath d='M0 17A17 17 0 0 1 34 17Z' fill='%23f8dde3'/%3E%3Ccircle cx='17' cy='9.5' r='2.1' fill='%23fffbfa'/%3E%3C/svg%3E");
+  --scallop-down: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='34' height='17' viewBox='0 0 34 17'%3E%3Cpath d='M0 0A17 17 0 0 0 34 0Z' fill='%23f8dde3'/%3E%3Ccircle cx='17' cy='7.5' r='2.1' fill='%23fffbfa'/%3E%3C/svg%3E");
+}
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; scroll-padding-top: 88px; }
+
+body {
+  margin: 0;
+  background: var(--sugar);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: var(--t-base);
+  line-height: 1.6;
+  text-rendering: optimizeLegibility;
+}
+
+img { max-width: 100%; display: block; height: auto; }
+[hidden] { display: none !important; }
+
+a { color: var(--rose); text-underline-offset: 3px; text-decoration-thickness: 1px; }
+a:hover { color: var(--rose-deep); }
+
+:focus-visible { outline: 3px solid var(--rose); outline-offset: 3px; border-radius: 4px; }
+
+h1, h2, h3 {
+  font-family: var(--display);
+  font-weight: 500;
+  line-height: 1.12;
+  letter-spacing: -0.01em;
+  margin: 0 0 0.5em;
+  font-optical-sizing: auto;
+  text-wrap: balance;
+}
+h1 { font-size: var(--t-xxl); }
+h2 { font-size: var(--t-xl); }
+h3 { font-size: var(--t-md); font-weight: 600; }
+p { margin: 0 0 1em; text-wrap: pretty; }
+
+.wrap { width: 100%; max-width: var(--wrap); margin-inline: auto; padding-inline: var(--gutter); }
+.measure { max-width: 62ch; }
+.lede { font-size: var(--t-md); color: var(--muted); line-height: 1.55; }
+.muted { color: var(--muted); }
+.small { font-size: var(--t-sm); }
+
+.skip { position: absolute; left: -999px; top: 8px; background: var(--ink); color: #fff; padding: 8px 14px; z-index: 100; }
+.skip:focus { left: 8px; }
+
+/* ── Sections ─────────────────────────────────────────────── */
+.section { padding-block: clamp(56px, 8vw, 104px); }
+.section-head { max-width: 640px; margin-bottom: clamp(28px, 4vw, 44px); }
+.section-head p { color: var(--muted); }
+
+/* Blush band with piped scallop edges */
+.band {
+  position: relative;
+  background: var(--blush);
+  margin-block: 17px;
+}
+.band::before,
+.band::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 17px;
+  background-repeat: repeat-x;
+  background-position: center;
+  pointer-events: none;
+}
+.band::before { top: -16px; background-image: var(--scallop-up); }
+.band::after { bottom: -16px; background-image: var(--scallop-down); }
+.band .section { padding-block: clamp(48px, 7vw, 88px); }
+
+/* Note paper (her menu-slide grid) */
+.paper {
+  background-color: #fff;
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 26px 26px;
+  background-position: -1px -1px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-paper);
+  padding: clamp(22px, 3.5vw, 36px);
+  box-shadow: 0 1px 0 #fff inset, 0 18px 40px -28px rgba(120, 40, 70, 0.35);
+}
+
+/* ── Buttons ──────────────────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 48px;
+  padding: 12px 24px;
+  border-radius: 999px;
+  border: 1.5px solid var(--rose);
+  background: var(--rose);
+  color: #fff;
+  font: 700 1rem/1.2 var(--body);
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.15s, color 0.15s, border-color 0.15s;
+}
+.btn:hover { background: var(--rose-deep); border-color: var(--rose-deep); color: #fff; }
+.btn-ghost { background: transparent; color: var(--rose); }
+.btn-ghost:hover { background: var(--rose); color: #fff; }
+.btn svg { width: 20px; height: 20px; flex: none; }
+.btn[disabled],
+.btn[aria-disabled='true'] { opacity: 0.45; cursor: not-allowed; }
+.btn-row { display: flex; flex-wrap: wrap; gap: 12px; }
+
+/* ── Photos ───────────────────────────────────────────────── */
+.photo { border-radius: var(--radius-photo); overflow: hidden; background: var(--blush-soft); }
+.photo img { width: 100%; height: 100%; object-fit: cover; }
+
+/* ── Tags ─────────────────────────────────────────────────── */
+.tag {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 2px 10px;
+  border-radius: 999px;
+  background: var(--blush);
+  color: var(--rose-deep);
+  white-space: nowrap;
+}
+.tag-seasonal { background: #fbe9c9; color: #7a5212; }
+.tag-green { background: #e1efdc; color: #2f5a26; }
+
+/* ── Stars ────────────────────────────────────────────────── */
+.stars { color: var(--gold); letter-spacing: 1px; }
+
+/* ── Forms ────────────────────────────────────────────────── */
+.field { display: grid; gap: 6px; margin-bottom: 18px; align-content: start; }
+.field label,
+.field legend { font-weight: 700; font-size: 0.95rem; }
+.field .hint { font-size: var(--t-sm); color: var(--muted); margin: 0; }
+.field .error { font-size: var(--t-sm); color: #a3152b; margin: 0; font-weight: 600; }
+input[type='text'],
+input[type='tel'],
+input[type='number'],
+input[type='date'],
+input[type='url'],
+select,
+textarea {
+  width: 100%;
+  font: inherit;
+  color: var(--ink);
+  padding: 12px 14px;
+  min-height: 48px;
+  border: 1.5px solid var(--line);
+  border-radius: 10px;
+  background: #fff;
+}
+textarea { min-height: 96px; resize: vertical; }
+input:focus,
+select:focus,
+textarea:focus { outline: none; border-color: var(--rose); box-shadow: 0 0 0 3px rgba(176, 54, 93, 0.18); }
+input[aria-invalid='true'],
+select[aria-invalid='true'] { border-color: #a3152b; }
+fieldset { border: 0; padding: 0; margin: 0 0 18px; }
+.choice-row { display: flex; flex-wrap: wrap; gap: 10px; }
+.choice {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border: 1.5px solid var(--line);
+  border-radius: 999px;
+  background: #fff;
+  cursor: pointer;
+  font-weight: 600;
+}
+.choice input { accent-color: var(--rose); width: 18px; height: 18px; margin: 0; }
+.choice:has(input:checked) { border-color: var(--rose); background: var(--blush-soft); }
+.check { display: flex; gap: 12px; align-items: flex-start; cursor: pointer; }
+.check input { accent-color: var(--rose); width: 20px; height: 20px; margin-top: 3px; flex: none; }
+.grid-2 { display: grid; gap: 0 18px; grid-template-columns: 1fr; }
+@media (min-width: 640px) { .grid-2 { grid-template-columns: 1fr 1fr; } }
+
+/* ── Utilities ────────────────────────────────────────────── */
+.visually-hidden {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  overflow: hidden; clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}

@@ -1,0 +1,81 @@
+---
+import Logo from './Logo.astro';
+import Icon from './Icon.astro';
+import { site, nav, waLink } from '../data/site';
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="wrap grid">
+    <div class="about">
+      <Logo class="foot-logo" />
+      <p>100% eggless cakes and desserts, made fresh by {site.owner.split(' ')[0]} in {site.area}.</p>
+      <p class="badges">
+        <span>FSSAI approved{site.fssai && <>: Lic. No. {site.fssai}</>}</span>
+        <span><span class="stars" aria-hidden="true">★★★★★</span> {site.google.rating} on Google</span>
+      </p>
+    </div>
+
+    <div>
+      <h2 class="foot-h">Visit or pick up</h2>
+      <address>
+        {site.address.line1},<br />
+        {site.address.line2},<br />
+        {site.address.city} {site.address.pincode}
+      </address>
+      <p class="small muted">10:30 am to 6 pm. Closed on Thursdays.</p>
+    </div>
+
+    <div>
+      <h2 class="foot-h">Get in touch</h2>
+      <ul class="links">
+        <li><a href={waLink()}><Icon name="chat" /> WhatsApp {site.phoneDisplay}</a></li>
+        <li class="small muted">Text only, no calls please.</li>
+        <li><a href={`mailto:${site.email}`}><Icon name="mail" /> {site.email}</a></li>
+        <li><a href={site.social.instagram}><Icon name="instagram" /> {site.social.instagramHandle}</a></li>
+        <li><a href={site.social.threads}><Icon name="threads" /> Threads</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h2 class="foot-h">Pages</h2>
+      <ul class="links">
+        <li><a href="/order/">Order form</a></li>
+        {nav.map((n) => <li><a href={n.href}>{n.label}</a></li>)}
+        <li><a href="/policies/">Policies and FAQ</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap legal small">© {year} {site.name}. Photos are of cakes made by Sneha.</div>
+</footer>
+
+<style>
+  .site-footer {
+    position: relative;
+    margin-top: 17px;
+    background: var(--blush);
+    padding: clamp(48px, 7vw, 72px) 0 28px;
+  }
+  .site-footer::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -16px;
+    height: 17px;
+    background: var(--scallop-up) repeat-x center;
+  }
+  .grid { display: grid; gap: 36px; grid-template-columns: 1.3fr 1fr 1.2fr 0.8fr; }
+  @media (max-width: 900px) { .grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 560px) { .grid { grid-template-columns: 1fr; } }
+  .about :global(.foot-logo) { width: 112px; margin-bottom: 14px; }
+  .about p { max-width: 34ch; }
+  .badges { display: flex; flex-direction: column; gap: 4px; font-weight: 700; font-size: 0.95rem; }
+  .foot-h { font-family: var(--body); font-size: 1rem; font-weight: 800; margin-bottom: 12px; }
+  address { font-style: normal; margin-bottom: 8px; }
+  .links { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
+  .links a { color: var(--ink); text-decoration: none; display: inline-flex; align-items: center; gap: 8px; word-break: break-word; }
+  .links a:hover { color: var(--rose); text-decoration: underline; }
+  .links :global(svg) { width: 18px; height: 18px; flex: none; color: var(--rose); }
+  .legal { margin-top: 40px; padding-top: 18px; border-top: 1px solid rgba(143, 42, 75, 0.18); color: var(--muted); }
+</style>

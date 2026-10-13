@@ -1,0 +1,81 @@
+---
+import Base from '../layouts/Base.astro';
+import PageIntro from '../components/PageIntro.astro';
+import Icon from '../components/Icon.astro';
+import { site, waLink } from '../data/site';
+---
+
+<Base title="Contact and pickup" description="Find Happy Layers by Her at Chaitanya Park, Bhosari, PCMC, Pune. Open 10:30 am to 6 pm, closed Thursdays. WhatsApp +91 91727 14878.">
+  <PageIntro title="Contact and pickup" lede="The quickest way to reach Sneha is a WhatsApp text. She’s usually baking, so please don’t call." />
+
+  <div class="wrap cols">
+    <div>
+      <a class="btn wa" href={waLink('Hi Sneha!')}><Icon name="chat" /> WhatsApp {site.phoneDisplay}</a>
+
+      <h2 class="h">Pickup address</h2>
+      <address>
+        {site.address.line1},<br />
+        {site.address.line2},<br />
+        {site.address.city}, {site.address.state} {site.address.pincode}
+      </address>
+      <a href={site.google.reviewsUrl}><Icon name="pin" class="ic" /> Open in Google Maps</a>
+
+      <h2 class="h">Opening hours</h2>
+      <table class="hours">
+        <tbody>
+          {
+            site.hours.map((h) => (
+              <tr class:list={{ closed: h.time === 'Closed' }} data-day={h.day}>
+                <th scope="row">{h.day}</th>
+                <td>{h.time}</td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+
+      <h2 class="h">Elsewhere</h2>
+      <ul class="links">
+        <li><a href={`mailto:${site.email}`}><Icon name="mail" class="ic" /> {site.email}</a></li>
+        <li><a href={site.social.instagram}><Icon name="instagram" class="ic" /> Instagram {site.social.instagramHandle}</a></li>
+        <li><a href={site.social.threads}><Icon name="threads" class="ic" /> Threads</a></li>
+        <li><a href={site.google.reviewsUrl}><span class="stars">★</span> {site.google.rating} on Google, {site.google.reviewCount} reviews</a></li>
+      </ul>
+    </div>
+
+    <div class="map">
+      <iframe
+        title="Map showing Happy Layers by Her in Bhosari, Pune"
+        src={site.google.mapEmbed}
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
+</Base>
+
+<script>
+  const day = new Date().toLocaleDateString('en-US', { weekday: 'long', timeZone: 'Asia/Kolkata' });
+  document.querySelector(`.hours tr[data-day="${day}"]`)?.classList.add('today');
+</script>
+
+<style>
+  .cols { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: clamp(28px, 5vw, 64px); align-items: start; padding-bottom: clamp(56px, 8vw, 96px); }
+  .wa { margin-bottom: 12px; }
+  .h { font-family: var(--body); font-size: 1rem; font-weight: 800; margin: 32px 0 10px; }
+  address { font-style: normal; margin-bottom: 8px; font-size: 1.1rem; }
+  a :global(.ic) { width: 18px; height: 18px; vertical-align: -3px; margin-right: 4px; }
+  .hours { border-collapse: collapse; width: 100%; max-width: 380px; }
+  .hours th, .hours td { text-align: left; padding: 7px 0; border-bottom: 1px solid var(--line); }
+  .hours th { font-weight: 600; }
+  .hours .closed td { color: var(--rose-deep); font-weight: 700; }
+  .hours :global(.today) th::after { content: ' (today)'; color: var(--muted); font-weight: 400; font-size: var(--t-sm); }
+  .links { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
+  .links a { word-break: break-word; }
+  .map { border-radius: var(--radius-photo); overflow: hidden; background: var(--blush-soft); min-height: 420px; position: sticky; top: 96px; }
+  .map iframe { border: 0; width: 100%; height: 520px; display: block; }
+  @media (max-width: 860px) {
+    .cols { grid-template-columns: 1fr; }
+    .map { position: static; min-height: 0; }
+    .map iframe { height: 360px; }
+  }
+</style>

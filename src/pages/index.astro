@@ -1,0 +1,350 @@
+---
+import Base from '../layouts/Base.astro';
+import Img from '../components/Img.astro';
+import Icon from '../components/Icon.astro';
+import { site, waLink } from '../data/site';
+import { reviews, orderSteps } from '../data/content';
+
+const bestsellers = [
+  { name: 'Dutch Truffle', img: 'dutch-truffle', price: 'from ₹650 / ½ kg', alt: 'Dutch truffle cake with chocolate drip' },
+  { name: 'Signature Chocolate', img: 'signature-chocolate-birthday', price: 'from ₹650 / ½ kg', alt: 'Signature chocolate cake with a Happy Birthday topper' },
+  { name: 'Red Velvet', img: 'lily-pink-ombre', price: 'from ₹650 / ½ kg', alt: 'Red velvet cake in pink ombre frosting with a lily' },
+  { name: 'Royal Rasmalai', img: 'rasmalai-florals', price: 'from ₹650 / ½ kg', alt: 'Rasmalai cake with pink piped flowers' },
+  { name: 'Bombolonis', img: 'bombolonis-box', price: 'by the box', alt: 'A box of filled bombolonis' },
+];
+
+const kinds = [
+  { title: 'Custom and vintage cakes', text: 'Send a picture, pick a flavour.', img: 'vintage-red-bows', href: '/menu/#designs', alt: 'White vintage cake with red bows', big: true },
+  { title: 'Bento cakes', text: 'Small cakes in a box, from ₹359.', img: 'bento-birthday', href: '/menu/#designs', alt: 'Bento cake in a box' },
+  { title: 'Kids and theme cakes', text: 'Baby showers to birthdays.', img: 'elephant-baby-cake', href: '/gallery/', alt: 'Baby cake with an elephant topper' },
+  { title: 'Bombolonis and desserts', text: 'Brownies, donuts, cookies, cupcakes.', img: 'bombolonis-filled', href: '/menu/#desserts', alt: 'Filled bombolonis' },
+  { title: 'Gifting and hampers', text: 'Festive and corporate boxes.', img: 'diwali-hamper-box', href: '/gifting/', alt: 'Diwali hamper with gold ribbon' },
+];
+---
+
+<Base title={site.name} description="Custom eggless cakes, cheesecakes, bombolonis and brownies by Sneha, made fresh in Bhosari, PCMC, Pune. FSSAI approved, 5.0 on Google. Order on WhatsApp.">
+  <!-- Hero -->
+  <section class="hero wrap">
+    <div class="hero-text">
+      <h1>Eggless cakes, piped by hand in Pune</h1>
+      <p class="lede">
+        I’m Sneha. I bake custom cakes, cheesecakes, bombolonis and brownies to order from my studio kitchen in Bhosari, PCMC.
+      </p>
+      <div class="btn-row">
+        <a class="btn" href="/order/">Plan your order</a>
+        <a class="btn btn-ghost" href="/menu/">See menu and prices</a>
+      </div>
+      <ul class="facts">
+        <li>
+          <span class="stars" aria-hidden="true">★★★★★</span>
+          <span><strong>{site.google.rating}</strong> from {site.google.reviewCount} Google reviews</span>
+        </li>
+        <li><strong>100% eggless</strong> and FSSAI approved</li>
+        <li><strong>{site.ordersServed}</strong> orders in {site.yearsBaking} years</li>
+      </ul>
+    </div>
+    <figure class="hero-photo">
+      <div class="arch">
+        <Img name="lily-cake" alt="Pink cake with a fresh lily and pearl details, piped Happy Birthday on the board" sizes="(min-width: 900px) 460px, 90vw" eager />
+      </div>
+      <figcaption>In frame: Red Velvet with cream cheese frosting</figcaption>
+    </figure>
+  </section>
+
+  <!-- Bestsellers -->
+  <div class="band">
+    <section class="section wrap">
+      <div class="head-row">
+        <div class="section-head">
+          <h2>Bestsellers</h2>
+          <p>The flavours people order again and again.</p>
+        </div>
+        <a class="more" href="/menu/">Full menu and prices</a>
+      </div>
+      <ul class="best" role="list">
+        {
+          bestsellers.map((b) => (
+            <li>
+              <a href="/menu/">
+                <div class="photo best-photo">
+                  <Img name={b.img} alt={b.alt} sizes="(min-width: 900px) 220px, 46vw" />
+                </div>
+                <h3>{b.name}</h3>
+                <p class="small muted">{b.price}</p>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+  </div>
+
+  <!-- How ordering works -->
+  <section class="section wrap">
+    <div class="section-head">
+      <h2>How ordering works</h2>
+      <p>Everything happens on WhatsApp. Please text, don’t call. Sneha is usually baking.</p>
+    </div>
+    <ol class="steps">
+      {
+        orderSteps.map((s, i) => (
+          <li>
+            <span class="num" aria-hidden="true">{i + 1}</span>
+            <h3>{s.title}</h3>
+            <p>{s.text}</p>
+          </li>
+        ))
+      }
+    </ol>
+    <p class="steps-note small muted">Order at least 2 days ahead, or 3 days for fondant cakes. Pickup from Bhosari, 10:30 am to 6 pm, closed Thursdays.</p>
+    <div class="btn-row"><a class="btn" href="/order/">Plan your order</a></div>
+  </section>
+
+  <!-- What she bakes -->
+  <section class="section wrap kinds-sec">
+    <div class="section-head">
+      <h2>What I bake</h2>
+      <p>Every order is made fresh for you, so no two cakes are quite the same.</p>
+    </div>
+    <ul class="kinds" role="list">
+      {
+        kinds.map((k) => (
+          <li class:list={{ big: k.big }}>
+            <a href={k.href}>
+              <div class="photo">
+                <Img name={k.img} alt={k.alt} sizes={k.big ? '(min-width: 900px) 560px, 92vw' : '(min-width: 900px) 280px, 46vw'} />
+              </div>
+              <div class="kind-text">
+                <h3>{k.title}</h3>
+                <p>{k.text}</p>
+              </div>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <!-- Reviews -->
+  <div class="band">
+    <section class="section wrap reviews">
+      <div class="score">
+        <p class="score-num">{site.google.rating}</p>
+        <p class="stars score-stars" aria-label="5 out of 5 stars">★★★★★</p>
+        <p>From {site.google.reviewCount} reviews on Google, and 5.0 on Justdial.</p>
+        <a href={site.google.reviewsUrl}>Read all reviews on Google</a>
+      </div>
+      <ul class="quotes" role="list">
+        {
+          reviews.slice(0, 4).map((r) => (
+            <li>
+              <blockquote>
+                <p>{r.text}</p>
+              </blockquote>
+              <p class="who small">{r.about}, Google review</p>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+  </div>
+
+  <!-- About teaser -->
+  <section class="section wrap meet">
+    <div class="photo meet-photo">
+      <Img name="sneha-waving" alt="Sneha in her apron, waving from her studio kitchen" sizes="(min-width: 900px) 360px, 70vw" />
+    </div>
+    <div>
+      <h2>Hi, I’m Sneha</h2>
+      <p class="lede">
+        I’ve been baking eggless cakes in PCMC for over 5 years. Every cake is made with love, care, hygiene and a sprinkle of sweetness, from birthdays to big days.
+      </p>
+      <p>I also teach bomboloni and donut masterclasses for home bakers.</p>
+      <div class="btn-row">
+        <a class="btn btn-ghost" href="/about/">Read my story</a>
+        <a class="btn btn-ghost" href="/workshops/">See workshops</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Closing call -->
+  <section class="wrap closing">
+    <div class="paper closing-card">
+      <div>
+        <h2>Planning a celebration?</h2>
+        <p>Tell me the date, flavour and design. I’ll reply on WhatsApp with the final price.</p>
+      </div>
+      <div class="btn-row">
+        <a class="btn" href="/order/">Plan your order</a>
+        <a class="btn btn-ghost" href={waLink('Hi Sneha! I have a question about an order.')}>
+          <Icon name="chat" /> Ask a question
+        </a>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  /* Hero */
+  .hero {
+    display: grid;
+    grid-template-columns: 1.08fr 0.92fr;
+    gap: clamp(32px, 5vw, 72px);
+    align-items: center;
+    padding-block: clamp(36px, 6vw, 80px) clamp(56px, 7vw, 96px);
+  }
+  .hero h1 { max-width: 15ch; margin-bottom: 0.4em; }
+  .hero .lede { max-width: 44ch; margin-bottom: 28px; }
+  .facts { list-style: none; padding: 0; margin: 32px 0 0; display: grid; gap: 8px; color: var(--muted); }
+  .facts li { display: flex; gap: 10px; align-items: baseline; }
+  .facts li::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--rose-bright); flex: none; transform: translateY(-2px); }
+  .facts li:first-child::before { display: none; }
+  .facts strong { color: var(--ink); }
+
+  .hero-photo { margin: 0; position: relative; justify-self: center; width: min(100%, 460px); }
+  .arch {
+    position: relative;
+    aspect-ratio: 4 / 5;
+    border-radius: 999px 999px 22px 22px;
+    overflow: hidden;
+    background: var(--blush-soft);
+  }
+  .arch :global(img) { width: 100%; height: 100%; object-fit: cover; object-position: 50% 62%; }
+  /* piped beads around the arch */
+  .hero-photo::before {
+    content: '';
+    position: absolute;
+    inset: -14px;
+    border-radius: 999px 999px 34px 34px;
+    border: 4px dotted var(--rose-bright);
+    pointer-events: none;
+  }
+  .hero-photo figcaption {
+    position: absolute;
+    left: -18px;
+    bottom: 26px;
+    max-width: 230px;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 10px 14px;
+    font-size: var(--t-sm);
+    color: var(--muted);
+    box-shadow: 0 14px 30px -20px rgba(80, 30, 50, 0.45);
+  }
+
+  @media (max-width: 860px) {
+    .hero { grid-template-columns: 1fr; }
+    .hero-photo { order: -1; width: min(82%, 380px); margin-top: 16px; }
+    .hero-photo figcaption { left: 50%; transform: translateX(-50%); bottom: -18px; text-align: center; width: max-content; max-width: 90%; }
+  }
+
+  /* Bestsellers */
+  .head-row { display: flex; justify-content: space-between; align-items: end; gap: 16px; flex-wrap: wrap; }
+  .head-row .section-head { margin-bottom: 0; }
+  .more { font-weight: 700; padding-bottom: 6px; }
+  .best {
+    list-style: none;
+    padding: 0;
+    margin: 32px 0 0;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 18px;
+  }
+  .best a { text-decoration: none; color: var(--ink); display: block; }
+  .best-photo { aspect-ratio: 3 / 4; margin-bottom: 12px; border: 4px solid #fff; }
+  .best h3 { font-size: 1.15rem; margin-bottom: 2px; }
+  .best a:hover h3 { color: var(--rose); }
+  @media (max-width: 900px) {
+    .best {
+      grid-auto-flow: column;
+      grid-template-columns: none;
+      grid-auto-columns: minmax(170px, 44%);
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      padding-bottom: 8px;
+      margin-right: calc(var(--gutter) * -1);
+      padding-right: var(--gutter);
+    }
+    .best li { scroll-snap-align: start; }
+  }
+
+  /* Steps */
+  .steps { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; counter-reset: s; }
+  .steps li { border-top: 2px solid var(--blush); padding-top: 18px; }
+  .num {
+    display: inline-grid;
+    place-items: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: var(--blush);
+    color: var(--rose-deep);
+    font-family: var(--display);
+    font-size: 1.35rem;
+    font-weight: 600;
+    margin-bottom: 14px;
+  }
+  .steps h3 { font-size: 1.2rem; }
+  .steps p { color: var(--muted); margin: 0; }
+  .steps-note { margin: 28px 0 20px; }
+  @media (max-width: 900px) { .steps { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 520px) { .steps { grid-template-columns: 1fr; gap: 20px; } }
+
+  /* Kinds mosaic */
+  .kinds-sec { padding-top: 0; }
+  .kinds {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 1fr;
+    gap: 18px;
+  }
+  .kinds li.big { grid-column: span 2; grid-row: span 2; }
+  .kinds a { position: relative; display: block; height: 100%; min-height: 240px; color: #fff; text-decoration: none; }
+  .kinds .photo { position: absolute; inset: 0; }
+  .kinds .photo::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(43, 31, 35, 0.78), rgba(43, 31, 35, 0) 55%); }
+  .kind-text { position: absolute; left: 0; right: 0; bottom: 0; padding: 18px; }
+  .kind-text h3 { color: #fff; font-size: 1.25rem; margin-bottom: 2px; }
+  .big .kind-text h3 { font-size: 1.8rem; }
+  .kind-text p { margin: 0; font-size: var(--t-sm); opacity: 0.92; }
+  .kinds a:hover h3 { text-decoration: underline; text-underline-offset: 4px; }
+  @media (max-width: 900px) {
+    .kinds { grid-template-columns: 1fr 1fr; }
+    .kinds a { min-height: 220px; }
+    .kinds li.big { grid-row: span 1; }
+    .kinds li.big a { min-height: 340px; }
+  }
+
+  /* Reviews */
+  .reviews { display: grid; grid-template-columns: 0.7fr 1.3fr; gap: clamp(28px, 5vw, 64px); align-items: start; }
+  .score-num { font-family: var(--display); font-size: clamp(4.5rem, 3rem + 6vw, 7.5rem); line-height: 0.9; margin: 0; font-weight: 500; }
+  .score-stars { font-size: 1.5rem; margin: 8px 0 12px; }
+  .score a { font-weight: 700; }
+  .quotes { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 28px 32px; }
+  .quotes blockquote { margin: 0; padding-left: 18px; border-left: 3px dotted var(--rose-bright); }
+  .quotes blockquote p { font-family: var(--display); font-style: italic; font-size: 1.15rem; line-height: 1.5; margin-bottom: 8px; }
+  .who { padding-left: 21px; }
+  .who { color: var(--rose-deep); font-weight: 700; margin: 0; }
+  @media (max-width: 860px) {
+    .reviews { grid-template-columns: 1fr; }
+    .quotes { grid-template-columns: 1fr; }
+  }
+
+  /* Meet */
+  .meet { display: grid; grid-template-columns: 360px 1fr; gap: clamp(28px, 5vw, 64px); align-items: center; }
+  .meet-photo { aspect-ratio: 4 / 5; border-radius: 999px 999px 18px 18px; }
+  .meet-photo :global(img) { object-position: 50% 20%; }
+  @media (max-width: 760px) {
+    .meet { grid-template-columns: 1fr; }
+    .meet-photo { width: min(72%, 300px); }
+  }
+
+  /* Closing */
+  .closing { padding-bottom: clamp(56px, 8vw, 96px); }
+  .closing-card { display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap; }
+  .closing-card h2 { margin-bottom: 0.3em; }
+  .closing-card p { margin: 0; max-width: 46ch; }
+</style>

@@ -1,0 +1,229 @@
+---
+import Base from '../layouts/Base.astro';
+import PageIntro from '../components/PageIntro.astro';
+import Icon from '../components/Icon.astro';
+import { site } from '../data/site';
+import { orderKinds, cakeFlavours, cheesecakeFlavours, weights, deliverableNote } from '../data/menu';
+
+const data = {
+  whatsapp: site.whatsapp,
+  kinds: orderKinds,
+  cakeFlavours,
+  cheesecakeFlavours,
+  noticeDays: site.noticeDays,
+  noticeDaysFondant: site.noticeDaysFondant,
+  closedDays: site.closedDays,
+};
+---
+
+<Base title="Order" description="Plan your eggless cake order: pick the flavour, weight, design and date, and send it to Sneha on WhatsApp in one tap." hideOrderBar>
+  <PageIntro
+    title="Plan your order"
+    lede="Fill this in and tap the button. WhatsApp opens with your order already written, so you just press send. Sneha replies with the final price."
+  />
+
+  <div class="wrap layout">
+    <form id="order-form" class="order" novalidate>
+      <!-- 1. What -->
+      <fieldset class="block">
+        <legend class="block-title"><span class="n">1</span> What would you like?</legend>
+
+        <div class="field">
+          <label for="kind">Item</label>
+          <select id="kind" name="kind" required>
+            <option value="">Choose one</option>
+            {orderKinds.map((k) => <option value={k.value}>{k.label}</option>)}
+          </select>
+          <p class="hint" id="price-hint" aria-live="polite"></p>
+          <p class="error" id="kind-error" hidden>Choose what you’d like to order.</p>
+        </div>
+
+        <div class="field" id="flavour-wrap">
+          <label for="flavour">Flavour</label>
+          <select id="flavour" name="flavour"></select>
+          <input type="text" id="flavour-text" name="flavourText" placeholder="Flavour or type, if you know it" hidden />
+        </div>
+
+        <fieldset class="field" id="weight-wrap">
+          <legend>Weight</legend>
+          <div class="choice-row">
+            {
+              weights.map((w, i) => (
+                <label class="choice">
+                  <input type="radio" name="weight" value={w} checked={i === 1} /> {w}
+                </label>
+              ))
+            }
+          </div>
+          <p class="hint">½ kg serves about 4 to 6 people, 1 kg about 8 to 12.</p>
+        </fieldset>
+
+        <div class="field" id="qty-wrap" hidden>
+          <label for="qty">How many?</label>
+          <input type="text" id="qty" name="qty" inputmode="numeric" placeholder="For example: 1 box, 12 pieces" />
+        </div>
+      </fieldset>
+
+      <!-- 2. Design -->
+      <fieldset class="block">
+        <legend class="block-title"><span class="n">2</span> Design</legend>
+        <div class="field">
+          <label for="design">Describe the design or theme</label>
+          <textarea id="design" name="design" placeholder="For example: pink vintage piping with bows, or a space theme for a 6 year old"></textarea>
+        </div>
+        <label class="check field">
+          <input type="checkbox" id="refphoto" name="refphoto" />
+          <span>I’ll send a reference photo on WhatsApp</span>
+        </label>
+        <p class="hint ref-hint">Every cake is made by hand, so slight differences from reference images may occur.</p>
+        <div class="field" id="cake-msg-wrap">
+          <label for="cakeMessage">Message on the cake <span class="muted">(optional)</span></label>
+          <input type="text" id="cakeMessage" name="cakeMessage" placeholder="For example: Happy Birthday Riya" maxlength="60" />
+        </div>
+      </fieldset>
+
+      <!-- 3. When -->
+      <fieldset class="block">
+        <legend class="block-title"><span class="n">3</span> When and where</legend>
+        <div class="grid-2">
+          <div class="field">
+            <label for="date">Date needed</label>
+            <input type="date" id="date" name="date" required aria-describedby="date-hint" />
+            <p class="hint" id="date-hint">Order at least 2 days ahead, 3 for fondant. Closed on Thursdays.</p>
+            <p class="error" id="date-error" hidden></p>
+          </div>
+          <div class="field">
+            <label for="slot">Time</label>
+            <select id="slot" name="slot">
+              <option value="">Any time</option>
+              {site.timeSlots.map((t) => <option>{t}</option>)}
+            </select>
+          </div>
+        </div>
+
+        <fieldset class="field">
+          <legend>Pickup or delivery</legend>
+          <div class="choice-row">
+            <label class="choice"><input type="radio" name="mode" value="pickup" checked /> Pickup from Bhosari</label>
+            <label class="choice"><input type="radio" name="mode" value="delivery" /> Delivery</label>
+          </div>
+          <p class="hint">Pickup is always the safest option for cakes.</p>
+        </fieldset>
+
+        <div id="delivery-wrap" hidden>
+          <div class="field">
+            <label for="area">Delivery area</label>
+            <input type="text" id="area" name="area" placeholder="For example: Wakad, near Phoenix Mall" />
+            <p class="error" id="area-error" hidden>Add the area so Sneha can work out the delivery charge.</p>
+          </div>
+          <p class="notice" id="delivery-note">{deliverableNote} Delivery charges depend on the location.</p>
+        </div>
+      </fieldset>
+
+      <!-- 4. You -->
+      <fieldset class="block">
+        <legend class="block-title"><span class="n">4</span> About you</legend>
+        <div class="field">
+          <label for="name">Your name</label>
+          <input type="text" id="name" name="name" autocomplete="given-name" required />
+          <p class="error" id="name-error" hidden>Add your name.</p>
+        </div>
+        <div class="field">
+          <label for="notes">Anything else? <span class="muted">(optional)</span></label>
+          <textarea id="notes" name="notes" placeholder="Allergies, budget, number of guests…"></textarea>
+        </div>
+      </fieldset>
+
+      <div class="paper agree">
+        <h2 class="agree-title">Before you send</h2>
+        <ul>
+          <li>A <strong>50% advance</strong> confirms your order. It is non-refundable.</li>
+          <li>No last-minute changes once the order is confirmed.</li>
+          <li>We aren’t responsible for damage after pickup or during third-party delivery.</li>
+        </ul>
+        <label class="check">
+          <input type="checkbox" id="agree" name="agree" required />
+          <span>I’ve read the <a href="/policies/" target="_blank">order policies</a></span>
+        </label>
+        <p class="error" id="agree-error" hidden>Tick the box to confirm you’ve read the policies.</p>
+      </div>
+
+      <div class="send-row">
+        <button type="submit" class="btn send"><Icon name="chat" /> Send order on WhatsApp</button>
+        <p class="small muted">Opens WhatsApp with your message. Nothing is sent until you press send there.</p>
+      </div>
+    </form>
+
+    <aside class="preview-col" aria-label="Message preview">
+      <div class="preview">
+        <p class="preview-head">Your WhatsApp message</p>
+        <div class="bubble"><pre id="preview"></pre></div>
+        <p class="small muted">To {site.phoneDisplay}. Please text, don’t call.</p>
+      </div>
+    </aside>
+  </div>
+
+  <script type="application/json" id="order-data" set:html={JSON.stringify(data)} />
+</Base>
+
+<script>
+  import { initOrderForm } from '../scripts/order';
+  initOrderForm();
+</script>
+
+<style>
+  .layout { display: grid; grid-template-columns: minmax(0, 1fr) 380px; gap: clamp(28px, 5vw, 64px); align-items: start; padding-bottom: clamp(56px, 8vw, 96px); }
+  .order { max-width: 680px; }
+  .block { margin-bottom: 36px; }
+  .block-title { display: flex; align-items: center; gap: 12px; font-family: var(--display); font-size: 1.7rem; font-weight: 500; margin-bottom: 18px; padding: 0; }
+  .n {
+    display: inline-grid;
+    place-items: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--blush);
+    color: var(--rose-deep);
+    font-size: 1.1rem;
+    font-weight: 600;
+    flex: none;
+  }
+  .ref-hint { margin: -10px 0 18px; }
+  .notice { background: var(--blush-soft); border-left: 3px solid var(--rose-bright); padding: 12px 14px; border-radius: 0 8px 8px 0; font-size: var(--t-sm); margin: 0 0 8px; }
+  .notice.warn { background: #fdf3e2; border-color: var(--gold); }
+
+  .agree { margin-bottom: 24px; }
+  .agree-title { font-family: var(--body); font-size: 1.05rem; font-weight: 800; margin-bottom: 8px; }
+  .agree ul { margin: 0 0 16px; padding-left: 20px; background: rgba(255, 255, 255, 0.8); }
+  .agree li { margin-bottom: 4px; }
+  .agree .check { background: rgba(255, 255, 255, 0.85); padding: 6px 0; font-weight: 700; }
+
+  .send-row .btn { width: 100%; min-height: 56px; font-size: 1.08rem; }
+  .send-row p { margin-top: 10px; text-align: center; }
+
+  .preview-col { position: sticky; top: 96px; }
+  .preview { background: #efe6dd; border-radius: 18px; padding: 18px; }
+  .preview-head { font-weight: 800; font-size: var(--t-sm); margin-bottom: 10px; }
+  .bubble {
+    background: #e2f7cb;
+    border-radius: 12px 0 12px 12px;
+    padding: 12px 14px;
+    position: relative;
+    margin-bottom: 10px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.08);
+  }
+  .bubble::after {
+    content: '';
+    position: absolute;
+    right: -8px;
+    top: 0;
+    border-left: 8px solid #e2f7cb;
+    border-bottom: 10px solid transparent;
+  }
+  .bubble pre { margin: 0; white-space: pre-wrap; word-break: break-word; font: 0.93rem/1.5 var(--body); color: #1f2a1a; }
+
+  @media (max-width: 960px) {
+    .layout { grid-template-columns: 1fr; }
+    .preview-col { position: static; order: 2; }
+  }
+</style>

@@ -1,0 +1,134 @@
+---
+import Base from '../layouts/Base.astro';
+import PageIntro from '../components/PageIntro.astro';
+import Img from '../components/Img.astro';
+import Icon from '../components/Icon.astro';
+import { site } from '../data/site';
+import { workshop } from '../data/content';
+---
+
+<Base title="Baking workshops" description="Eggless bomboloni and donut masterclass in Bhosari, PCMC, Pune and live online. Learn yeast, proofing, frying, fillings, packaging and pricing." image="bombolonis-filled-960.webp">
+  <PageIntro title={workshop.title} lede={workshop.summary} />
+
+  <section class="wrap top">
+    <div class="photo top-photo">
+      <Img name="bombolonis-filled" alt="Bombolonis filled with jam and chocolate" sizes="(min-width: 900px) 520px, 92vw" eager />
+    </div>
+    <div>
+      <div class="status paper">
+        {
+          workshop.nextBatch ? (
+            <>
+              <h2>Next batch: {workshop.nextBatch}</h2>
+              <p>Seats are limited. Register below to hold your place.</p>
+            </>
+          ) : (
+            <>
+              <h2>Next batch coming soon</h2>
+              <p>New dates are announced on Instagram first. Register your interest below and Sneha will message you when booking opens.</p>
+              <a href={site.social.instagram}><Icon name="instagram" class="ic" /> Follow {site.social.instagramHandle}</a>
+            </>
+          )
+        }
+      </div>
+      <ul class="modes" role="list">
+        {
+          workshop.modes.map((m) => (
+            <li>
+              <h3>{m.name}</h3>
+              <p>{m.detail}</p>
+              <p class="fee">{m.fee}</p>
+              {m.note && <p class="small muted">{m.note}</p>}
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <div class="band">
+    <section class="section wrap learn">
+      <div>
+        <h2>What you’ll learn</h2>
+        <ul class="covers">
+          {workshop.covers.map((c) => <li>{c}</li>)}
+        </ul>
+      </div>
+      <div class="paper take">
+        <h2>What you take home</h2>
+        <ul>
+          {workshop.receive.map((r) => <li>{r}</li>)}
+        </ul>
+        <p class="small">Good for beginners, home bakers, and anyone planning to sell bombolonis and donuts.</p>
+      </div>
+    </section>
+  </div>
+
+  <section class="section wrap reg">
+    <div class="section-head">
+      <h2>Register your interest</h2>
+      <p>This sends a WhatsApp message to Sneha. She’ll reply with dates, fee and how to book.</p>
+    </div>
+    <form data-wa-form data-intro="Hi Sneha! I’m interested in the bomboloni and donut masterclass." class="reg-form">
+      <div class="grid-2">
+        <div class="field">
+          <label for="w-name">Your name</label>
+          <input type="text" id="w-name" data-label="Name" required autocomplete="given-name" />
+          <p class="error" data-error-for="w-name" hidden>Add your name.</p>
+        </div>
+        <div class="field">
+          <label for="w-seats">Number of seats</label>
+          <input type="number" id="w-seats" data-label="Seats" min="1" max="10" value="1" />
+        </div>
+      </div>
+      <fieldset class="field">
+        <legend>Which one?</legend>
+        <div class="choice-row">
+          <label class="choice"><input type="radio" name="w-mode" data-label="Mode" value="Offline, at the studio" checked /> Offline, at the studio</label>
+          <label class="choice"><input type="radio" name="w-mode" data-label="Mode" value="Live online" /> Live online</label>
+        </div>
+      </fieldset>
+      <div class="field">
+        <label for="w-notes">Anything to ask? <span class="muted">(optional)</span></label>
+        <textarea id="w-notes" data-label="Question" placeholder="For example: I’m a complete beginner, is that okay?"></textarea>
+      </div>
+      <button class="btn" type="submit"><Icon name="chat" /> Send on WhatsApp</button>
+    </form>
+  </section>
+</Base>
+
+<script>
+  import { initWaForms } from '../scripts/waform';
+  import { site } from '../data/site';
+  initWaForms(site.whatsapp);
+</script>
+
+<style>
+  .top { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(28px, 5vw, 56px); align-items: start; padding-bottom: clamp(56px, 7vw, 88px); }
+  .top-photo { aspect-ratio: 4 / 5; border-radius: 999px 999px 18px 18px; }
+  .status { margin-bottom: 24px; }
+  .status h2 { font-size: 1.7rem; }
+  .status p { background: rgba(255, 255, 255, 0.8); }
+  .status a { display: inline-flex; align-items: center; gap: 8px; font-weight: 700; background: #fff; }
+  .status :global(.ic) { width: 20px; height: 20px; }
+  .modes { list-style: none; padding: 0; margin: 0; display: grid; gap: 16px; }
+  .modes li { border: 1.5px solid var(--line); border-radius: 14px; padding: 18px 20px; background: #fff; }
+  .modes h3 { font-size: 1.3rem; margin-bottom: 4px; }
+  .modes p { margin: 0 0 4px; }
+  .fee { font-weight: 800; color: var(--rose-deep); }
+
+  .learn { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: clamp(28px, 5vw, 56px); align-items: start; }
+  .covers { columns: 2; column-gap: 32px; padding-left: 20px; margin: 0; }
+  .covers li { margin-bottom: 10px; break-inside: avoid; }
+  .take h2 { font-size: 1.6rem; }
+  .take ul { padding-left: 20px; background: rgba(255, 255, 255, 0.8); }
+  .take li { margin-bottom: 6px; }
+  .take p { background: rgba(255, 255, 255, 0.8); margin: 0; }
+
+  .reg-form { max-width: 640px; }
+  @media (max-width: 860px) {
+    .top, .learn { grid-template-columns: 1fr; }
+    .top-photo { max-width: 420px; }
+  }
+  @media (max-width: 520px) { .covers { columns: 1; } }
+</style>

@@ -1,0 +1,118 @@
+---
+import Logo from './Logo.astro';
+import Icon from './Icon.astro';
+import { nav, waLink } from '../data/site';
+const path = Astro.url.pathname;
+---
+
+<header class="site-header">
+  <div class="wrap bar">
+    <a href="/" class="brand" aria-label="Happy Layers by Her, home">
+      <Logo class="brand-mark" text={false} />
+      <span class="brand-name">Happy Layers <em>by Her</em></span>
+    </a>
+
+    <nav class="nav" aria-label="Main">
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-list">
+        <Icon name="menu" class="i-open" /><Icon name="close" class="i-close" />
+        <span class="visually-hidden">Menu</span>
+      </button>
+      <ul id="nav-list">
+        {
+          nav.map((item) => (
+            <li>
+              <a href={item.href} aria-current={path.startsWith(item.href) ? 'page' : undefined}>
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+        <li class="nav-cta">
+          <a class="btn" href="/order/">Order</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const btn = document.querySelector<HTMLButtonElement>('.nav-toggle');
+  const list = document.getElementById('nav-list');
+  btn?.addEventListener('click', () => {
+    const open = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', String(!open));
+    list?.classList.toggle('open', !open);
+  });
+</script>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(255, 251, 250, 0.94);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+  }
+  .bar { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 72px; }
+  .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--ink); }
+  .brand :global(.brand-mark) { width: 48px; }
+  .brand-name { font-family: var(--display); font-size: 1.35rem; font-weight: 600; letter-spacing: 0.01em; line-height: 1; }
+  .brand-name em { font-style: italic; font-weight: 500; color: var(--rose); }
+
+  .nav ul { list-style: none; margin: 0; padding: 0; display: flex; align-items: center; gap: 4px; }
+  .nav a:not(.btn) {
+    display: block;
+    padding: 10px 12px;
+    color: var(--ink);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.97rem;
+    border-radius: 8px;
+  }
+  .nav a:not(.btn):hover { color: var(--rose); }
+  .nav a[aria-current='page'] { color: var(--rose); text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 8px; }
+  .nav-cta { margin-left: 8px; }
+  .nav-cta .btn { min-height: 42px; padding: 8px 22px; }
+  .nav-toggle { display: none; }
+
+  @media (max-width: 1020px) {
+    .nav-toggle {
+      display: grid;
+      place-items: center;
+      width: 48px;
+      height: 48px;
+      border: 1.5px solid var(--line);
+      border-radius: 12px;
+      background: #fff;
+      color: var(--ink);
+      cursor: pointer;
+    }
+    .nav-toggle :global(svg) { width: 24px; height: 24px; }
+    .nav-toggle :global(.i-close),
+    .nav-toggle[aria-expanded='true'] :global(.i-open) { display: none; }
+    .nav-toggle[aria-expanded='true'] :global(.i-close) { display: block; }
+    .nav ul {
+      display: none;
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 100%;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0;
+      padding: 8px var(--gutter) 20px;
+      background: var(--sugar);
+      border-bottom: 1px solid var(--line);
+      box-shadow: 0 20px 30px -20px rgba(80, 30, 50, 0.25);
+    }
+    .nav ul.open { display: flex; }
+    .nav a:not(.btn) { padding: 14px 4px; border-bottom: 1px solid var(--line); font-size: 1.05rem; }
+    .nav-cta { margin: 16px 0 0; }
+    .nav-cta .btn { width: 100%; min-height: 48px; }
+  }
+  @media (max-width: 400px) {
+    .brand-name { font-size: 1.15rem; }
+    .brand :global(.brand-mark) { width: 42px; }
+  }
+</style>

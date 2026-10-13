@@ -1,0 +1,16 @@
+---
+interface Props { title: string; lede?: string }
+const { title, lede } = Astro.props;
+---
+
+<section class="intro wrap">
+  <h1>{title}</h1>
+  {lede && <p class="lede">{lede}</p>}
+  <slot />
+</section>
+
+<style>
+  .intro { padding-block: clamp(36px, 6vw, 72px) clamp(28px, 4vw, 44px); }
+  .intro h1 { font-size: var(--t-xl); font-size: clamp(2.3rem, 1.6rem + 3vw, 3.6rem); max-width: 20ch; }
+  .intro .lede { max-width: 58ch; margin: 0; }
+</style>

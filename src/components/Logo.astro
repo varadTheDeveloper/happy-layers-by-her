@@ -1,0 +1,13 @@
+---
+import { logoSvg } from '../lib/logo';
+interface Props { text?: boolean; class?: string }
+const { text = true, class: cls } = Astro.props;
+const id = 'hl' + Math.random().toString(36).slice(2, 7);
+---
+
+<span class:list={['logo', cls]} set:html={logoSvg({ text, id })} />
+
+<style>
+  .logo { display: block; line-height: 0; }
+  .logo :global(svg) { width: 100%; height: auto; }
+</style>

@@ -1,0 +1,34 @@
+---
+// Responsive photo from public/img, using the manifest made when the photos were resized.
+import images from '../data/images.json';
+
+interface Props {
+  name: string;
+  alt: string;
+  sizes?: string;
+  eager?: boolean;
+  class?: string;
+}
+const { name, alt, sizes = '(min-width: 900px) 33vw, 50vw', eager = false, class: cls } = Astro.props;
+const entry = (images as Record<string, { w: number; h: number; files: Record<string, string> }>)[name];
+if (!entry) throw new Error(`Image "${name}" is not in src/data/images.json`);
+const files = Object.entries(entry.files)
+  .map(([w, f]) => ({ w: Number(w) > entry.w ? entry.w : Number(w), f }))
+  .sort((a, b) => a.w - b.w);
+const largest = files[files.length - 1];
+const srcset = files.map(({ w, f }) => `/img/${f} ${w}w`).join(', ');
+const height = Math.round((entry.h * largest.w) / entry.w);
+---
+
+<img
+  src={`/img/${largest.f}`}
+  srcset={srcset}
+  sizes={sizes}
+  width={largest.w}
+  height={height}
+  alt={alt}
+  loading={eager ? 'eager' : 'lazy'}
+  fetchpriority={eager ? 'high' : 'auto'}
+  decoding="async"
+  class={cls}
+/>

@@ -1,0 +1,149 @@
+---
+import Base from '../layouts/Base.astro';
+import PageIntro from '../components/PageIntro.astro';
+import Img from '../components/Img.astro';
+import Icon from '../components/Icon.astro';
+import { waLink } from '../data/site';
+import { festiveHamper, giftIdeas } from '../data/content';
+---
+
+<Base title="Gifting and corporate hampers" description="Diwali and festive hampers, corporate dessert boxes, and cake-and-flower combos from Happy Layers by Her, Pune. Bulk orders welcome." image="diwali-hamper-box-960.webp">
+  <PageIntro
+    title="Gifting and hampers"
+    lede="Eggless treats packed to give: festive hampers, cake and flower combos, and dessert boxes for teams and clients. Bulk and corporate orders are welcome."
+  />
+
+  {
+    festiveHamper.show && (
+      <section class="wrap festive">
+        <div class="photo festive-photo">
+          <Img name={festiveHamper.img} alt="Diwali hamper box tied with a gold ribbon, with diyas and marigolds" sizes="(min-width: 900px) 520px, 92vw" eager />
+        </div>
+        <div class="paper festive-text">
+          <h2>{festiveHamper.title}</h2>
+          <p>{festiveHamper.intro}</p>
+          <h3>Inside the collection</h3>
+          <ul>
+            {festiveHamper.contains.map((c) => <li>{c}</li>)}
+          </ul>
+          <div class="btn-row">
+            <a class="btn" href={waLink('Hi Sneha! Please share the Diwali hamper catalogue and prices.')}>
+              <Icon name="chat" /> Get the catalogue and prices
+            </a>
+            <a class="btn btn-ghost" href="#corporate">Corporate order</a>
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  <div class="band">
+    <section class="section wrap">
+      <div class="section-head">
+        <h2>Gifts all year</h2>
+        <p>For birthdays, anniversaries, Rakhi, or just to say thank you.</p>
+      </div>
+      <ul class="ideas" role="list">
+        {
+          giftIdeas.map((g) => (
+            <li>
+              <div class="photo">
+                <Img name={g.img} alt={g.title} sizes="(min-width: 900px) 270px, 46vw" />
+              </div>
+              <h3>{g.title}</h3>
+              <p>{g.text}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+  </div>
+
+  <section class="section wrap corp" id="corporate">
+    <div>
+      <h2>Corporate and bulk orders</h2>
+      <p class="lede">Hampers for clients, dessert boxes for team celebrations, or a tray of buns for the office.</p>
+      <blockquote class="proof">
+        <p>“I ordered over 30 Korean buns for my office and home, and everyone absolutely loved them.”</p>
+        <footer class="small">Google review</footer>
+      </blockquote>
+      <p class="muted small">Give at least a week’s notice for large orders so everything can be made fresh.</p>
+    </div>
+
+    <form data-wa-form data-intro="Hi Sneha! I’d like a quote for a bulk or corporate order." class="corp-form">
+      <fieldset class="field">
+        <legend>Order for</legend>
+        <div class="choice-row">
+          <label class="choice"><input type="radio" name="c-type" data-label="Order for" value="Company or team" checked /> Company or team</label>
+          <label class="choice"><input type="radio" name="c-type" data-label="Order for" value="Personal, family event" /> Personal or family event</label>
+        </div>
+      </fieldset>
+      <div class="grid-2">
+        <div class="field">
+          <label for="c-name">Your name</label>
+          <input type="text" id="c-name" data-label="Name" required autocomplete="name" />
+          <p class="error" data-error-for="c-name" hidden>Add your name.</p>
+        </div>
+        <div class="field">
+          <label for="c-company">Company <span class="muted">(optional)</span></label>
+          <input type="text" id="c-company" data-label="Company" autocomplete="organization" />
+        </div>
+        <div class="field">
+          <label for="c-qty">How many hampers or boxes?</label>
+          <input type="number" id="c-qty" data-label="Quantity" min="1" required />
+          <p class="error" data-error-for="c-qty" hidden>Add a rough number.</p>
+        </div>
+        <div class="field">
+          <label for="c-budget">Budget per hamper <span class="muted">(optional)</span></label>
+          <input type="text" id="c-budget" data-label="Budget per hamper" placeholder="For example: ₹800" />
+        </div>
+        <div class="field">
+          <label for="c-date">Needed by</label>
+          <input type="date" id="c-date" data-label="Needed by" />
+        </div>
+        <div class="field">
+          <label for="c-area">Delivery area</label>
+          <input type="text" id="c-area" data-label="Delivery area" placeholder="For example: Hinjewadi Phase 1" />
+        </div>
+      </div>
+      <div class="field">
+        <label for="c-notes">What would you like inside? <span class="muted">(optional)</span></label>
+        <textarea id="c-notes" data-label="Details" placeholder="Hampers, brownies, buns, branded notes…"></textarea>
+      </div>
+      <button class="btn" type="submit"><Icon name="chat" /> Ask for a quote on WhatsApp</button>
+    </form>
+  </section>
+</Base>
+
+<script>
+  import { initWaForms } from '../scripts/waform';
+  import { site } from '../data/site';
+  initWaForms(site.whatsapp);
+</script>
+
+<style>
+  .festive { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: clamp(24px, 4vw, 48px); align-items: center; padding-bottom: clamp(56px, 7vw, 88px); }
+  .festive-photo { aspect-ratio: 4 / 5; }
+  .festive-text h2 { font-size: 2rem; }
+  .festive-text p,
+  .festive-text ul { background: rgba(255, 255, 255, 0.8); }
+  .festive-text h3 { font-family: var(--body); font-size: 1rem; font-weight: 800; }
+  .festive-text ul { padding-left: 20px; margin: 0 0 24px; }
+  .festive-text li { margin-bottom: 4px; }
+
+  .ideas { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+  .ideas .photo { aspect-ratio: 4 / 5; margin-bottom: 12px; border: 4px solid #fff; }
+  .ideas h3 { margin-bottom: 4px; }
+  .ideas p { color: var(--muted); margin: 0; }
+
+  .corp { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: clamp(28px, 5vw, 64px); align-items: start; scroll-margin-top: 90px; }
+  .proof { margin: 28px 0; padding-left: 18px; border-left: 3px dotted var(--rose-bright); }
+  .proof p { font-family: var(--display); font-style: italic; font-size: 1.2rem; margin-bottom: 4px; }
+  .proof footer { color: var(--rose-deep); font-weight: 700; }
+
+  @media (max-width: 900px) {
+    .festive, .corp { grid-template-columns: 1fr; }
+    .festive-photo { max-width: 420px; }
+    .ideas { grid-template-columns: 1fr 1fr; }
+  }
+</style>

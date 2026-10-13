@@ -1,0 +1,95 @@
+---
+import Base from '../layouts/Base.astro';
+import Img from '../components/Img.astro';
+import { site } from '../data/site';
+---
+
+<Base title="About Sneha" description="Sneha Karande is a cake artist in Bhosari, PCMC, Pune, baking 100% eggless custom cakes for over 5 years and teaching baking workshops." image="sneha-smiling-640.webp">
+  <section class="wrap story">
+    <div class="photos">
+      <div class="photo p1">
+        <Img name="sneha-smiling" alt="Sneha smiling in her kitchen" sizes="(min-width: 900px) 300px, 60vw" eager />
+      </div>
+      <div class="photo p2">
+        <Img name="cake-slice" alt="A slice of layered chocolate cake" sizes="(min-width: 900px) 220px, 40vw" />
+      </div>
+    </div>
+    <div class="text">
+      <h1>Hi, I’m Sneha</h1>
+      <p class="lede">
+        A passionate baker based in PCMC, Pune, baking up eggless smiles for over 5 years now.
+      </p>
+      <p>
+        At Happy Layers by Her, every cake and dessert is made with love, care, hygiene and a sprinkle of sweetness. From birthdays to big days, I’m here to make your moments extra special with custom bakes that taste just as good as they look.
+      </p>
+      <p>
+        What started in my home kitchen now runs from my own studio kitchen in Bhosari. More than {site.ordersServed} celebrations later, I still bake every order fresh, by hand, one at a time.
+      </p>
+      <p>Thank you for being a part of my little baking journey. Your support means the world.</p>
+      <p class="sign">Sneha</p>
+    </div>
+  </section>
+
+  <div class="band">
+    <section class="section wrap">
+      <h2 class="vals-title">How I bake</h2>
+      <dl class="vals">
+        <div>
+          <dt>Always eggless</dt>
+          <dd>Every cake, cheesecake and dessert is 100% eggless, so the whole family can share it.</dd>
+        </div>
+        <div>
+          <dt>Real chocolate</dt>
+          <dd>Brownies and chocolate cakes are made with couverture chocolate, not compound.</dd>
+        </div>
+        <div>
+          <dt>Made fresh to order</dt>
+          <dd>Nothing sits in a display fridge. Your cake is baked for your date.</dd>
+        </div>
+        <div>
+          <dt>Clean kitchen</dt>
+          <dd>Happy Layers by Her is an FSSAI approved home bakery{site.fssai && ` (Lic. No. ${site.fssai})`}.</dd>
+        </div>
+      </dl>
+    </section>
+  </div>
+
+  <section class="section wrap teach">
+    <div class="photo t-photo">
+      <Img name="sneha-waving" alt="Sneha waving from her studio kitchen" sizes="(min-width: 900px) 320px, 70vw" />
+    </div>
+    <div>
+      <h2>I also teach</h2>
+      <p class="lede">My bomboloni and donut masterclass is for home bakers who want to learn properly, from activating yeast to packaging and pricing.</p>
+      <div class="btn-row">
+        <a class="btn" href="/workshops/">See workshops</a>
+        <a class="btn btn-ghost" href="/order/">Plan an order</a>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .story { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: clamp(28px, 6vw, 80px); align-items: center; padding-block: clamp(36px, 6vw, 80px); }
+  .photos { position: relative; padding: 0 60px 60px 0; }
+  .p1 { aspect-ratio: 4 / 5; border-radius: 999px 999px 18px 18px; }
+  .p1 :global(img) { object-position: 50% 70%; }
+  .p2 { position: absolute; right: 0; bottom: 0; width: 45%; aspect-ratio: 4 / 5; border: 6px solid var(--sugar); }
+  .text h1 { font-size: clamp(2.4rem, 1.6rem + 3vw, 3.6rem); }
+  .text p { max-width: 58ch; }
+  .sign { font-family: var(--display); font-style: italic; font-size: 1.8rem; color: var(--rose); margin-top: 8px; }
+  .vals-title { margin-bottom: 28px; }
+  .vals { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; margin: 0; }
+  .vals dt { font-family: var(--display); font-size: 1.35rem; font-weight: 500; margin-bottom: 6px; }
+  .vals dd { margin: 0; color: var(--ink); opacity: 0.85; }
+  .teach { display: grid; grid-template-columns: 320px 1fr; gap: clamp(28px, 5vw, 64px); align-items: center; }
+  .t-photo { aspect-ratio: 1 / 1; }
+  .t-photo :global(img) { object-position: 50% 60%; }
+  @media (max-width: 900px) {
+    .story, .teach { grid-template-columns: 1fr; }
+    .photos { max-width: 420px; }
+    .vals { grid-template-columns: 1fr 1fr; }
+    .t-photo { max-width: 300px; }
+  }
+  @media (max-width: 520px) { .vals { grid-template-columns: 1fr; } }
+</style>

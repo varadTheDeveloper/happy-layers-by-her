@@ -1,0 +1,64 @@
+---
+import Base from '../layouts/Base.astro';
+import PageIntro from '../components/PageIntro.astro';
+import { policies, faqs } from '../data/content';
+---
+
+<Base title="Policies and FAQ" description="Order policies and answers to common questions: advance payment, notice period, delivery, eggless baking and pickup at Happy Layers by Her, Pune.">
+  <PageIntro title="Policies and FAQ" lede="Please read these before you order. They help every cake turn out right and reach you safely." />
+
+  <div class="wrap cols">
+    <section class="paper pol" aria-labelledby="pol-h">
+      <h2 id="pol-h">Please read</h2>
+      <dl>
+        {
+          policies.map((p) => (
+            <div>
+              <dt>{p.title}</dt>
+              <dd>{p.text}</dd>
+            </div>
+          ))
+        }
+      </dl>
+    </section>
+
+    <section aria-labelledby="faq-h">
+      <h2 id="faq-h">Questions people ask</h2>
+      <div class="faq">
+        {
+          faqs.map((f) => (
+            <details>
+              <summary>{f.q}</summary>
+              <p>{f.a}</p>
+            </details>
+          ))
+        }
+      </div>
+      <p class="muted">Still unsure? <a href="/contact/">Message Sneha on WhatsApp</a>.</p>
+    </section>
+  </div>
+</Base>
+
+<style>
+  .cols { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(28px, 5vw, 64px); align-items: start; padding-bottom: clamp(56px, 8vw, 96px); }
+  .pol h2 { font-size: 2rem; }
+  .pol dl { margin: 0; display: grid; gap: 14px; }
+  .pol dl > div { background: rgba(255, 255, 255, 0.85); padding: 4px 0; }
+  .pol dt { font-weight: 800; }
+  .pol dd { margin: 0; }
+  .faq { border-top: 1px solid var(--line); margin-bottom: 20px; }
+  details { border-bottom: 1px solid var(--line); }
+  summary {
+    cursor: pointer;
+    list-style: none;
+    padding: 16px 36px 16px 0;
+    font-family: var(--display);
+    font-size: 1.2rem;
+    position: relative;
+  }
+  summary::-webkit-details-marker { display: none; }
+  summary::after { content: '+'; position: absolute; right: 6px; top: 12px; font-size: 1.6rem; color: var(--rose); font-family: var(--body); }
+  details[open] summary::after { content: '–'; }
+  details p { margin: 0 0 18px; color: var(--muted); max-width: 60ch; }
+  @media (max-width: 860px) { .cols { grid-template-columns: 1fr; } }
+</style>

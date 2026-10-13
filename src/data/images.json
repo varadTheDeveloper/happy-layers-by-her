@@ -1,0 +1,762 @@
+{
+"wa-chocolate-cage-cake": {
+"w": 1200,
+"h": 1600,
+"files": {
+"480": "wa-chocolate-cage-cake-480.webp",
+"960": "wa-chocolate-cage-cake-960.webp"
+}
+},
+"wa-pinata-cake": {
+"w": 1202,
+"h": 1600,
+"files": {
+"480": "wa-pinata-cake-480.webp",
+"960": "wa-pinata-cake-960.webp"
+}
+},
+"wa-fruit-basket-cake": {
+"w": 1600,
+"h": 1600,
+"files": {
+"480": "wa-fruit-basket-cake-480.webp",
+"960": "wa-fruit-basket-cake-960.webp"
+}
+},
+"wa-bombolonis": {
+"w": 1170,
+"h": 1527,
+"files": {
+"480": "wa-bombolonis-480.webp",
+"960": "wa-bombolonis-960.webp"
+}
+},
+"wa-doll-cake": {
+"w": 1200,
+"h": 1600,
+"files": {
+"480": "wa-doll-cake-480.webp",
+"960": "wa-doll-cake-960.webp"
+}
+},
+"wa-gulabjamun-cake": {
+"w": 962,
+"h": 1280,
+"files": {
+"480": "wa-gulabjamun-cake-480.webp",
+"960": "wa-gulabjamun-cake-960.webp"
+}
+},
+"lily-cake": {
+"w": 1440,
+"h": 1920,
+"files": {
+"480": "lily-cake-480.webp",
+"960": "lily-cake-960.webp"
+}
+},
+"vintage-red-bows": {
+"w": 1440,
+"h": 1920,
+"files": {
+"480": "vintage-red-bows-480.webp",
+"960": "vintage-red-bows-960.webp"
+}
+},
+"ferrero-florals": {
+"w": 1440,
+"h": 1920,
+"files": {
+"480": "ferrero-florals-480.webp",
+"960": "ferrero-florals-960.webp"
+}
+},
+"blue-florals-pearls": {
+"w": 720,
+"h": 1280,
+"files": {
+"480": "blue-florals-pearls-480.webp",
+"720": "blue-florals-pearls-720.webp"
+}
+},
+"pink-anniversary": {
+"w": 1440,
+"h": 1920,
+"files": {
+"480": "pink-anniversary-480.webp",
+"960": "pink-anniversary-960.webp"
+}
+},
+"signature-chocolate-birthday": {
+"w": 1440,
+"h": 1920,
+"files": {
+"480": "signature-chocolate-birthday-480.webp",
+"960": "signature-chocolate-birthday-960.webp"
+}
+},
+"fresh-pineapple": {
+"w": 1440,
+"h": 1920,
+"files": {
+"480": "fresh-pineapple-480.webp",
+"960": "fresh-pineapple-960.webp"
+}
+},
+"lavender-florals": {
+"w": 1440,
+"h": 1920,
+"files": {
+"480": "lavender-florals-480.webp",
+"960": "lavender-florals-960.webp"
+}
+},
+"white-gold-birthday": {
+"w": 1440,
+"h": 1920,
+"files": {
+"480": "white-gold-birthday-480.webp",
+"960": "white-gold-birthday-960.webp"
+}
+},
+"white-red-roses-2": {
+"w": 1440,
+"h": 1920,
+"files": {
+"480": "white-red-roses-2-480.webp",
+"960": "white-red-roses-2-960.webp"
+}
+},
+"strawberry-cake": {
+"w": 1440,
+"h": 1920,
+"files": {
+"480": "strawberry-cake-480.webp",
+"960": "strawberry-cake-960.webp"
+}
+},
+"gold-butterflies": {
+"w": 1440,
+"h": 1920,
+"files": {
+"480": "gold-butterflies-480.webp",
+"960": "gold-butterflies-960.webp"
+}
+},
+"butterfly-drip": {
+"w": 1440,
+"h": 1920,
+"files": {
+"480": "butterfly-drip-480.webp",
+"960": "butterfly-drip-960.webp"
+}
+},
+"daisy-cake": {
+"w": 1440,
+"h": 1920,
+"files": {
+"480": "daisy-cake-480.webp",
+"960": "daisy-cake-960.webp"
+}
+},
+"red-roses-pink": {
+"w": 1440,
+"h": 1920,
+"files": {
+"480": "red-roses-pink-480.webp",
+"960": "red-roses-pink-960.webp"
+}
+},
+"sunflower-floral": {
+"w": 1440,
+"h": 1920,
+"files": {
+"480": "sunflower-floral-480.webp",
+"960": "sunflower-floral-960.webp"
+}
+},
+"vintage-pink-piped": {
+"w": 1320,
+"h": 2347,
+"files": {
+"480": "vintage-pink-piped-480.webp",
+"960": "vintage-pink-piped-960.webp"
+}
+},
+"pink-daisy": {
+"w": 1440,
+"h": 1920,
+"files": {
+"480": "pink-daisy-480.webp",
+"960": "pink-daisy-960.webp"
+}
+},
+"red-roses-bouquet": {
+"w": 1440,
+"h": 1920,
+"files": {
+"480": "red-roses-bouquet-480.webp",
+"960": "red-roses-bouquet-960.webp"
+}
+},
+"chocolate-strawberry": {
+"w": 1440,
+"h": 1920,
+"files": {
+"480": "chocolate-strawberry-480.webp",
+"960": "chocolate-strawberry-960.webp"
+}
+},
+"yellow-florals": {
+"w": 1440,
+"h": 1920,
+"files": {
+"480": "yellow-florals-480.webp",
+"960": "yellow-florals-960.webp"
+}
+},
+"chocolate-hazelnut": {
+"w": 1440,
+"h": 1920,
+"files": {
+"480": "chocolate-hazelnut-480.webp",
+"960": "chocolate-hazelnut-960.webp"
+}
+},
+"lemon-cake": {
+"w": 1440,
+"h": 1920,
+"files": {
+"480": "lemon-cake-480.webp",
+"960": "lemon-cake-960.webp"
+}
+},
+"chocolate-overload": {
+"w": 1440,
+"h": 1920,
+"files": {
+"480": "chocolate-overload-480.webp",
+"960": "chocolate-overload-960.webp"
+}
+},
+"sunflower-cake": {
+"w": 1440,
+"h": 1920,
+"files": {
+"480": "sunflower-cake-480.webp",
+"960": "sunflower-cake-960.webp"
+}
+},
+"dutch-truffle": {
+"w": 1200,
+"h": 1600,
+"files": {
+"480": "dutch-truffle-480.webp",
+"960": "dutch-truffle-960.webp"
+}
+},
+"dutch-almond": {
+"w": 1320,
+"h": 2347,
+"files": {
+"480": "dutch-almond-480.webp",
+"960": "dutch-almond-960.webp"
+}
+},
+"chocolate-birthday": {
+"w": 1215,
+"h": 2160,
+"files": {
+"480": "chocolate-birthday-480.webp",
+"960": "chocolate-birthday-960.webp"
+}
+},
+"black-forest-drip": {
+"w": 1440,
+"h": 1920,
+"files": {
+"480": "black-forest-drip-480.webp",
+"960": "black-forest-drip-960.webp"
+}
+},
+"lily-pink-ombre": {
+"w": 1440,
+"h": 1920,
+"files": {
+"480": "lily-pink-ombre-480.webp",
+"960": "lily-pink-ombre-960.webp"
+}
+},
+"red-velvet-vintage": {
+"w": 1440,
+"h": 1920,
+"files": {
+"480": "red-velvet-vintage-480.webp",
+"960": "red-velvet-vintage-960.webp"
+}
+},
+"pink-bow-vintage": {
+"w": 1440,
+"h": 1920,
+"files": {
+"480": "pink-bow-vintage-480.webp",
+"960": "pink-bow-vintage-960.webp"
+}
+},
+"chocolate-gold-balls": {
+"w": 1440,
+"h": 1920,
+"files": {
+"480": "chocolate-gold-balls-480.webp",
+"960": "chocolate-gold-balls-960.webp"
+}
+},
+"rasmalai-florals": {
+"w": 1440,
+"h": 1920,
+"files": {
+"480": "rasmalai-florals-480.webp",
+"960": "rasmalai-florals-960.webp"
+}
+},
+"pink-vintage-bows": {
+"w": 1440,
+"h": 1920,
+"files": {
+"480": "pink-vintage-bows-480.webp",
+"960": "pink-vintage-bows-960.webp"
+}
+},
+"blue-florals": {
+"w": 1440,
+"h": 1920,
+"files": {
+"480": "blue-florals-480.webp",
+"960": "blue-florals-960.webp"
+}
+},
+"kitkat-cake": {
+"w": 1440,
+"h": 1920,
+"files": {
+"480": "kitkat-cake-480.webp",
+"960": "kitkat-cake-960.webp"
+}
+},
+"black-forest": {
+"w": 1440,
+"h": 1920,
+"files": {
+"480": "black-forest-480.webp",
+"960": "black-forest-960.webp"
+}
+},
+"cake-slice": {
+"w": 640,
+"h": 1136,
+"files": {
+"480": "cake-slice-480.webp",
+"640": "cake-slice-640.webp"
+}
+},
+"lavender-cake": {
+"w": 640,
+"h": 1136,
+"files": {
+"480": "lavender-cake-480.webp",
+"640": "lavender-cake-640.webp"
+}
+},
+"white-red-roses": {
+"w": 1200,
+"h": 1600,
+"files": {
+"480": "white-red-roses-480.webp",
+"960": "white-red-roses-960.webp"
+}
+},
+"pink-roses-marble": {
+"w": 1440,
+"h": 1621,
+"files": {
+"480": "pink-roses-marble-480.webp",
+"960": "pink-roses-marble-960.webp"
+}
+},
+"blue-heart-vintage": {
+"w": 1440,
+"h": 1920,
+"files": {
+"480": "blue-heart-vintage-480.webp",
+"960": "blue-heart-vintage-960.webp"
+}
+},
+"chocolate-heart-vintage": {
+"w": 1440,
+"h": 1920,
+"files": {
+"480": "chocolate-heart-vintage-480.webp",
+"960": "chocolate-heart-vintage-960.webp"
+}
+},
+"kitkat-gold-ribbon": {
+"w": 1440,
+"h": 1920,
+"files": {
+"480": "kitkat-gold-ribbon-480.webp",
+"960": "kitkat-gold-ribbon-960.webp"
+}
+},
+"red-heart-bento": {
+"w": 1440,
+"h": 1920,
+"files": {
+"480": "red-heart-bento-480.webp",
+"960": "red-heart-bento-960.webp"
+}
+},
+"mango-bento": {
+"w": 1440,
+"h": 1609,
+"files": {
+"480": "mango-bento-480.webp",
+"960": "mango-bento-960.webp"
+}
+},
+"sunflower-bento": {
+"w": 1440,
+"h": 1920,
+"files": {
+"480": "sunflower-bento-480.webp",
+"960": "sunflower-bento-960.webp"
+}
+},
+"rakhi-bento": {
+"w": 1440,
+"h": 1920,
+"files": {
+"480": "rakhi-bento-480.webp",
+"960": "rakhi-bento-960.webp"
+}
+},
+"bento-birthday": {
+"w": 1440,
+"h": 1920,
+"files": {
+"480": "bento-birthday-480.webp",
+"960": "bento-birthday-960.webp"
+}
+},
+"chocolate-bento": {
+"w": 1440,
+"h": 1920,
+"files": {
+"480": "chocolate-bento-480.webp",
+"960": "chocolate-bento-960.webp"
+}
+},
+"bento-brownie": {
+"w": 1440,
+"h": 1920,
+"files": {
+"480": "bento-brownie-480.webp",
+"960": "bento-brownie-960.webp"
+}
+},
+"astronaut-space-cake": {
+"w": 1440,
+"h": 1920,
+"files": {
+"480": "astronaut-space-cake-480.webp",
+"960": "astronaut-space-cake-960.webp"
+}
+},
+"elephant-baby-cake": {
+"w": 1440,
+"h": 1920,
+"files": {
+"480": "elephant-baby-cake-480.webp",
+"960": "elephant-baby-cake-960.webp"
+}
+},
+"gym-theme-cake": {
+"w": 1440,
+"h": 1920,
+"files": {
+"480": "gym-theme-cake-480.webp",
+"960": "gym-theme-cake-960.webp"
+}
+},
+"music-guitar-cake": {
+"w": 1440,
+"h": 1920,
+"files": {
+"480": "music-guitar-cake-480.webp",
+"960": "music-guitar-cake-960.webp"
+}
+},
+"princess-butterfly-cake": {
+"w": 1440,
+"h": 1920,
+"files": {
+"480": "princess-butterfly-cake-480.webp",
+"960": "princess-butterfly-cake-960.webp"
+}
+},
+"kitty-cake": {
+"w": 1440,
+"h": 1920,
+"files": {
+"480": "kitty-cake-480.webp",
+"960": "kitty-cake-960.webp"
+}
+},
+"kids-blue-gold-birthday": {
+"w": 1440,
+"h": 1920,
+"files": {
+"480": "kids-blue-gold-birthday-480.webp",
+"960": "kids-blue-gold-birthday-960.webp"
+}
+},
+"artist-theme-cake": {
+"w": 1440,
+"h": 1920,
+"files": {
+"480": "artist-theme-cake-480.webp",
+"960": "artist-theme-cake-960.webp"
+}
+},
+"bombolonis-box": {
+"w": 1440,
+"h": 1920,
+"files": {
+"480": "bombolonis-box-480.webp",
+"960": "bombolonis-box-960.webp"
+}
+},
+"bombolonis-tray": {
+"w": 640,
+"h": 1136,
+"files": {
+"480": "bombolonis-tray-480.webp",
+"640": "bombolonis-tray-640.webp"
+}
+},
+"tiramisu": {
+"w": 1440,
+"h": 1920,
+"files": {
+"480": "tiramisu-480.webp",
+"960": "tiramisu-960.webp"
+}
+},
+"donuts": {
+"w": 1440,
+"h": 1920,
+"files": {
+"480": "donuts-480.webp",
+"960": "donuts-960.webp"
+}
+},
+"bombolonis-filled": {
+"w": 1440,
+"h": 1920,
+"files": {
+"480": "bombolonis-filled-480.webp",
+"960": "bombolonis-filled-960.webp"
+}
+},
+"hazelnut-cupcake": {
+"w": 1215,
+"h": 2160,
+"files": {
+"480": "hazelnut-cupcake-480.webp",
+"960": "hazelnut-cupcake-960.webp"
+}
+},
+"cupcakes": {
+"w": 1440,
+"h": 1920,
+"files": {
+"480": "cupcakes-480.webp",
+"960": "cupcakes-960.webp"
+}
+},
+"cookie-tin": {
+"w": 640,
+"h": 1136,
+"files": {
+"480": "cookie-tin-480.webp",
+"640": "cookie-tin-640.webp"
+}
+},
+"sneha-waving": {
+"w": 640,
+"h": 1136,
+"files": {
+"480": "sneha-waving-480.webp",
+"640": "sneha-waving-640.webp"
+}
+},
+"sneha-smiling": {
+"w": 640,
+"h": 1136,
+"files": {
+"480": "sneha-smiling-480.webp",
+"640": "sneha-smiling-640.webp"
+}
+},
+"sneha-profile-photo": {
+"w": 150,
+"h": 150,
+"files": {
+"480": "sneha-profile-photo-480.webp",
+"150": "sneha-profile-photo-150.webp"
+}
+},
+"brownie-flowers-box": {
+"w": 1440,
+"h": 1920,
+"files": {
+"480": "brownie-flowers-box-480.webp",
+"960": "brownie-flowers-box-960.webp"
+}
+},
+"diwali-hamper": {
+"w": 1320,
+"h": 2347,
+"files": {
+"480": "diwali-hamper-480.webp",
+"960": "diwali-hamper-960.webp"
+}
+},
+"gift-boxes-gold-ribbon": {
+"w": 1320,
+"h": 2347,
+"files": {
+"480": "gift-boxes-gold-ribbon-480.webp",
+"960": "gift-boxes-gold-ribbon-960.webp"
+}
+},
+"bento-flowers-box": {
+"w": 1440,
+"h": 1920,
+"files": {
+"480": "bento-flowers-box-480.webp",
+"960": "bento-flowers-box-960.webp"
+}
+},
+"chocolate-jar": {
+"w": 1320,
+"h": 2347,
+"files": {
+"480": "chocolate-jar-480.webp",
+"960": "chocolate-jar-960.webp"
+}
+},
+"diwali-hamper-box": {
+"w": 1320,
+"h": 2347,
+"files": {
+"480": "diwali-hamper-box-480.webp",
+"960": "diwali-hamper-box-960.webp"
+}
+},
+"truffle-flowers-hamper": {
+"w": 1440,
+"h": 1552,
+"files": {
+"480": "truffle-flowers-hamper-480.webp",
+"960": "truffle-flowers-hamper-960.webp"
+}
+},
+"roses-cake-combo": {
+"w": 1440,
+"h": 1920,
+"files": {
+"480": "roses-cake-combo-480.webp",
+"960": "roses-cake-combo-960.webp"
+}
+},
+"roses-cake-combo-2": {
+"w": 1440,
+"h": 1920,
+"files": {
+"480": "roses-cake-combo-2-480.webp",
+"960": "roses-cake-combo-2-960.webp"
+}
+},
+"bomboloni-masterclass-online": {
+"w": 1320,
+"h": 2347,
+"files": {
+"480": "bomboloni-masterclass-online-480.webp",
+"960": "bomboloni-masterclass-online-960.webp"
+}
+},
+"bomboloni-masterclass-offline": {
+"w": 1320,
+"h": 2347,
+"files": {
+"480": "bomboloni-masterclass-offline-480.webp",
+"960": "bomboloni-masterclass-offline-960.webp"
+}
+},
+"anniversary-couple": {
+"w": 1440,
+"h": 1920,
+"files": {
+"480": "anniversary-couple-480.webp",
+"960": "anniversary-couple-960.webp"
+}
+},
+"two-tier-couple": {
+"w": 1440,
+"h": 1920,
+"files": {
+"480": "two-tier-couple-480.webp",
+"960": "two-tier-couple-960.webp"
+}
+},
+"three-tier-white-roses": {
+"w": 1440,
+"h": 1920,
+"files": {
+"480": "three-tier-white-roses-480.webp",
+"960": "three-tier-white-roses-960.webp"
+}
+},
+"tall-floral-2kg": {
+"w": 1440,
+"h": 1920,
+"files": {
+"480": "tall-floral-2kg-480.webp",
+"960": "tall-floral-2kg-960.webp"
+}
+},
+"two-tier-chocolate-drip": {
+"w": 1320,
+"h": 2347,
+"files": {
+"480": "two-tier-chocolate-drip-480.webp",
+"960": "two-tier-chocolate-drip-960.webp"
+}
+},
+"two-tier-floral": {
+"w": 1440,
+"h": 1920,
+"files": {
+"480": "two-tier-floral-480.webp",
+"960": "two-tier-floral-960.webp"
+}
+},
+"wedding-couple-topper": {
+"w": 640,
+"h": 1136,
+"files": {
+"480": "wedding-couple-topper-480.webp",
+"640": "wedding-couple-topper-640.webp"
+}
+}
+}

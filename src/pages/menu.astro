@@ -1,0 +1,165 @@
+---
+import Base from '../layouts/Base.astro';
+import PageIntro from '../components/PageIntro.astro';
+import Img from '../components/Img.astro';
+import { menu, basePrices, priceNotes } from '../data/menu';
+
+const inr = (n: number) => '₹' + n.toLocaleString('en-IN');
+const orderKindFor: Record<string, string> = {
+  bestsellers: 'cake',
+  signature: 'cake',
+  cheesecakes: 'cheesecake',
+  designs: 'cake',
+  desserts: 'other',
+};
+const orderLabel: Record<string, string> = {
+  bestsellers: 'Order a cake',
+  signature: 'Order a cake',
+  cheesecakes: 'Order a cheesecake',
+  designs: 'Plan a custom cake',
+  desserts: 'Order desserts',
+};
+---
+
+<Base title="Menu and prices" description="Eggless cake prices from ₹650 for ½ kg, cheesecakes from ₹800, couverture brownies, bombolonis, bento cakes and more from Happy Layers by Her, Bhosari, Pune.">
+  <PageIntro
+    title="Menu and prices"
+    lede="Everything is 100% eggless and made fresh to order. Prices below are starting prices. Your final price depends on the design, and Sneha confirms it on WhatsApp."
+  >
+    <nav class="jump" aria-label="Menu sections">
+      {menu.map((s) => <a href={`#${s.id}`}>{s.title}</a>)}
+    </nav>
+  </PageIntro>
+
+  <div class="wrap layout">
+    <aside class="side">
+      <div class="paper prices">
+        <h2>Starting prices</h2>
+        <table>
+          <thead>
+            <tr><th scope="col"><span class="visually-hidden">Item</span></th><th scope="col">½ kg</th><th scope="col">1 kg</th></tr>
+          </thead>
+          <tbody>
+            {
+              basePrices.map((p) => (
+                <tr>
+                  <th scope="row">{p.item}{p.note && <span class="from">{p.note}</span>}</th>
+                  <td>{inr(p.half)}</td>
+                  <td>{p.one ? inr(p.one) : '–'}</td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+        <h3>Please note</h3>
+        <ol class="notes">
+          {priceNotes.map((n) => <li>{n}</li>)}
+        </ol>
+        <a class="btn" href="/order/">Plan your order</a>
+      </div>
+    </aside>
+
+    <div class="sections">
+      {
+        menu.map((s) => {
+          const pics = s.items.filter((i) => i.img).slice(0, 4);
+          return (
+            <section id={s.id} class="menu-sec">
+              <h2>{s.title}</h2>
+              <p class="muted intro-p">{s.intro}</p>
+              {pics.length > 0 && (
+                <ul class="pics" role="list">
+                  {pics.map((i) => (
+                    <li>
+                      <div class="photo">
+                        <Img name={i.img!} alt={i.name} sizes="(min-width: 900px) 170px, 44vw" />
+                      </div>
+                      <span class="small">{i.name}</span>
+                    </li>
+                  ))}
+                </ul>
+              )}
+              <ul class="items" role="list">
+                {s.items.map((i) => (
+                  <li>
+                    <span class="name">
+                      {i.name}
+                      {i.tag && (
+                        <span class:list={['tag', { 'tag-seasonal': i.tag === 'Seasonal', 'tag-green': i.tag === 'No maida, no sugar' }]}>{i.tag}</span>
+                      )}
+                      {i.note && <span class="note">{i.note}</span>}
+                    </span>
+                    <span class="lead" aria-hidden="true" />
+                    <span class="price">{i.price}</span>
+                  </li>
+                ))}
+              </ul>
+              <a class="btn btn-ghost" href={`/order/?kind=${orderKindFor[s.id]}`}>{orderLabel[s.id]}</a>
+            </section>
+          );
+        })
+      }
+      <section class="menu-sec">
+        <h2>Hampers and gifting</h2>
+        <p class="muted intro-p">Festive hampers, corporate boxes and cake-and-flower combos are on their own page.</p>
+        <a class="btn btn-ghost" href="/gifting/">See gifting</a>
+      </section>
+    </div>
+  </div>
+</Base>
+
+<style>
+  .jump { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
+  .jump a {
+    padding: 8px 16px;
+    border: 1.5px solid var(--line);
+    border-radius: 999px;
+    background: #fff;
+    color: var(--ink);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+  }
+  .jump a:hover { border-color: var(--rose); color: var(--rose); }
+
+  .layout { display: grid; grid-template-columns: 360px 1fr; gap: clamp(28px, 5vw, 64px); align-items: start; padding-bottom: clamp(56px, 8vw, 96px); }
+  .side { position: sticky; top: 96px; }
+  .prices h2 { font-size: 1.9rem; }
+  .prices table { width: 100%; border-collapse: collapse; margin-bottom: 22px; background: rgba(255, 255, 255, 0.75); }
+  .prices th,
+  .prices td { padding: 9px 6px; text-align: right; border-bottom: 1px solid var(--line); font-variant-numeric: tabular-nums; }
+  .prices thead th { font-size: var(--t-sm); color: var(--muted); font-weight: 700; }
+  .prices tbody th { text-align: left; font-weight: 700; }
+  .from { display: block; font-weight: 400; font-size: 0.8rem; color: var(--muted); }
+  .prices td { white-space: nowrap; }
+  .prices h3 { font-family: var(--body); font-size: 1rem; font-weight: 800; margin-bottom: 6px; }
+  .notes { margin: 0 0 22px; padding-left: 20px; font-size: var(--t-sm); background: rgba(255, 255, 255, 0.75); }
+  .notes li { margin-bottom: 6px; }
+  .prices .btn { width: 100%; }
+
+  .menu-sec { padding-bottom: 48px; margin-bottom: 48px; border-bottom: 1px solid var(--line); scroll-margin-top: 96px; }
+  .menu-sec:last-child { border-bottom: 0; margin-bottom: 0; }
+  .intro-p { max-width: 56ch; }
+  .pics { list-style: none; padding: 0; margin: 20px 0 26px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  .pics .photo { aspect-ratio: 4 / 5; margin-bottom: 6px; }
+  .pics span { color: var(--muted); }
+
+  .items { list-style: none; padding: 0; margin: 0 0 26px; }
+  .items li { display: flex; align-items: baseline; gap: 10px; padding: 11px 0; }
+  .name { font-family: var(--display); font-size: 1.22rem; font-weight: 500; display: flex; flex-wrap: wrap; align-items: baseline; column-gap: 10px; row-gap: 2px; }
+  .name .tag { font-family: var(--body); }
+  .note { flex-basis: 100%; font-family: var(--body); font-size: var(--t-sm); color: var(--muted); }
+  .lead { flex: 1; border-bottom: 2px dotted var(--grid); min-width: 24px; transform: translateY(-4px); }
+  .price { white-space: nowrap; font-weight: 700; color: var(--rose-deep); font-size: 0.97rem; }
+
+  @media (max-width: 900px) {
+    .layout { grid-template-columns: 1fr; }
+    .side { position: static; }
+    .pics { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 480px) {
+    .items li { flex-wrap: wrap; }
+    .lead { display: none; }
+    .price { flex-basis: 100%; }
+  }
+</style>

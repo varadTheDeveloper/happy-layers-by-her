@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://happylayers.opentestudox.org/sitemap-index.xml
